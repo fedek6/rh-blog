@@ -1,7 +1,7 @@
 ---
 to: components/<%=name%>/<%=name%>.tsx
 ---
-import * as React from "react";
+import React from "react";
 import { Container } from "./<%=name%>.styles";
 
 type Props = {};
