@@ -19,3 +19,8 @@ Tech stack:
 * `npm run build`
 
 * `npm run lint`
+
+## Helpers & packages
+
+* [tailwind-styled-components](https://www.npmjs.com/package/tailwind-styled-components)
+* Inspired by [tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
