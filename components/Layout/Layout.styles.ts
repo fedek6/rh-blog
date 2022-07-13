@@ -8,3 +8,10 @@ export const Container = tw.div`
   xl:max-w-5xl
   xl:px-0
 `;
+
+export const InnerContainer = tw.div`
+  flex
+  h-screen
+  flex-col
+  justify-between
+`;

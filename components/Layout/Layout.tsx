@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Container } from "./Layout.styles";
+import { Container, InnerContainer } from "./Layout.styles";
 import { bodyClasses } from "@/config/theme";
 
 type Props = {
@@ -11,5 +11,9 @@ export const Layout: React.FC<Props> = ({ children }) => {
     bodyClasses.map((c) => document.body.classList.add(c));
   });
 
-  return <Container>{children}</Container>;
+  return (
+    <Container>
+      <InnerContainer>{children}</InnerContainer>
+    </Container>
+  );
 };
