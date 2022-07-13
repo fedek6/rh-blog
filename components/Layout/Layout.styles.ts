@@ -13,5 +13,4 @@ export const InnerContainer = tw.div`
   flex
   h-screen
   flex-col
-  justify-between
 `;

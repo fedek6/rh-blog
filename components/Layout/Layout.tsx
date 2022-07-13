@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, InnerContainer } from "./Layout.styles";
+import { Header } from "@/components/Header";
 import { bodyClasses } from "@/config/theme";
 
 type Props = {
@@ -13,7 +14,10 @@ export const Layout: React.FC<Props> = ({ children }) => {
 
   return (
     <Container>
-      <InnerContainer>{children}</InnerContainer>
+      <InnerContainer>
+        <Header />
+        <main>{children}</main>
+      </InnerContainer>
     </Container>
   );
 };
