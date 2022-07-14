@@ -27,6 +27,18 @@ module.exports = {
           900: "#2b0d0e",
           DEFAULT: "#d64045",
         },
+        "max-yellow-red": {
+          100: "#fff2d9",
+          200: "#ffe4b3",
+          300: "#ffd78e",
+          400: "#ffc968",
+          500: "#ffbc42",
+          600: "#cc9635",
+          700: "#997128",
+          800: "#664b1a",
+          900: "#33260d",
+          DEFAULT: "#ffbc42",
+        },
         "eerie-black": {
           100: "#d0d0d0",
           200: "#a1a1a1",
