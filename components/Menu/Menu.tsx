@@ -8,12 +8,20 @@ type Props = {
 
 type NativeProps = React.ComponentPropsWithoutRef<"ul">;
 
+const LINK_CLASSES = [
+  "text-eerie-black",
+  "hover:text-english-vermillion",
+  "dark:text-white",
+  "hover:dark:text-max-yellow-red",
+  "p-4",
+];
+
 export const Menu: React.FC<Props & NativeProps> = ({ items, ...props }) => {
   return (
     <ul {...props}>
       {items.map((item) => (
         <li key={uniqueId()}>
-          <HybridLink {...item} />
+          <HybridLink {...item} className={LINK_CLASSES.join(" ")} />
         </li>
       ))}
     </ul>
