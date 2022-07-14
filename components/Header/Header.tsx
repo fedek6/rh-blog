@@ -9,7 +9,7 @@ type Props = {};
 export const Header: React.FC<Props> = () => {
   return (
     <Container>
-      <Logo size="h-10" aria-label={siteMeta.name} />
+      <Logo logoClasses="h-8 md:h-12" aria-label={siteMeta.name} />
       <ThemeSwitch />
     </Container>
   );
