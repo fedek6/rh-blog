@@ -8,6 +8,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // 🖊️ Fonts
+      fontFamily: {
+        sans: ['"Public Sans"', "sans-serif"],
+        display: ['"League Spartan"', "sans-serif"],
+      },
+      // 🎨 Colors
       colors: {
         "english-vermillion": {
           100: "#f7d9da",
