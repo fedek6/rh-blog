@@ -1,7 +1,7 @@
 export const bodyClasses = [
   "bg-white",
-  "text-black",
+  "text-eerie-black",
   "antialiased",
-  "dark:bg-gray-900",
+  "dark:bg-eerie-black",
   "dark:text-white",
 ];
