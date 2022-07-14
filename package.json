@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "start-server-and-test start http://localhost:3000 cypress",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@svgr/webpack": "^6.2.1",
@@ -14,6 +16,7 @@
     "next-themes": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "start-server-and-test": "^1.14.0",
     "tailwind-styled-components": "^2.1.8"
   },
   "devDependencies": {
@@ -21,6 +24,7 @@
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "^10.4.7",
+    "cypress": "^10.3.0",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.2",
     "postcss": "^8.4.14",
