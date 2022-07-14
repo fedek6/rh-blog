@@ -20,7 +20,9 @@ export const Logo: React.FC<Props & NativeProps> = ({
             className={`fill-eerie-black dark:fill-white ${logoClasses}`}
           />
         </div>
-        <div className="hidden h-6 text-2xl font-semibold sm:block">blog</div>
+        <div className="hidden h-6 text-2xl font-display font-bold sm:block">
+          blog
+        </div>
       </a>
     </Link>
   );
