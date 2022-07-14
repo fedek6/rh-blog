@@ -1,4 +1,4 @@
-export const bodyClasses = [
+export const BODY_CLASSES = [
   "bg-white",
   "text-eerie-black",
   "antialiased",

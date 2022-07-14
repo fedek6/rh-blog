@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { bodyClasses } from "@/config/theme";
+import { BODY_CLASSES } from "@/config/theme";
 
 export default function Document() {
   return (
@@ -10,7 +10,7 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
-      <body className={bodyClasses.join(" ")}>
+      <body className={BODY_CLASSES.join(" ")}>
         <Main />
         <NextScript />
       </body>
