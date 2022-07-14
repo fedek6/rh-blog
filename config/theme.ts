@@ -4,4 +4,5 @@ export const bodyClasses = [
   "antialiased",
   "dark:bg-eerie-black",
   "dark:text-white",
+  "transition-[background-color]",
 ];
