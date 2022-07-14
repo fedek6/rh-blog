@@ -5,7 +5,7 @@ export const Container = tw.div`
   max-w-3xl
   px-4
   sm:px-6
-  xl:max-w-5xl
+  xl:max-w-6xl
   xl:px-0
 `;
 
