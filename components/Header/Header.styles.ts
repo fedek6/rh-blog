@@ -8,7 +8,8 @@ export const Container = tw.header`
 `;
 
 export const NavContainer = tw.nav`
-  flex
+  hidden
+  md:flex
   items-center
   text-base
   leading-5

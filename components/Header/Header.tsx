@@ -2,7 +2,7 @@ import React from "react";
 import { Container, NavContainer } from "./Header.styles";
 import { Logo } from "@/components/Logo";
 import { ThemeSwitch } from "@/components/ThemeSwitch";
-import { siteMeta } from "@/config/meta";
+import { SITE_META } from "@/config/meta";
 import { Menu } from "@/components/Menu";
 
 type Props = {};
@@ -10,11 +10,11 @@ type Props = {};
 const items = [
   {
     href: "/",
-    name: "test",
+    name: "Test",
   },
   {
     href: "/",
-    name: "test 2",
+    name: "Test 2",
     external: true,
   },
 ];
@@ -22,7 +22,7 @@ const items = [
 export const Header: React.FC<Props> = () => {
   return (
     <Container>
-      <Logo logoClasses="h-8 md:h-12" aria-label={siteMeta.name} />
+      <Logo logoClasses="h-8 md:h-12" aria-label={SITE_META.name} />
 
       <NavContainer>
         <Menu items={items} className="flex space-x-4" />
