@@ -4,20 +4,9 @@ import { Logo } from "@/components/Logo";
 import { ThemeSwitch } from "@/components/ThemeSwitch";
 import { SITE_META } from "@/config/meta";
 import { Menu } from "@/components/Menu";
+import { MAIN_MENU } from "@/config/menu";
 
 type Props = {};
-
-const items = [
-  {
-    href: "/",
-    name: "Test",
-  },
-  {
-    href: "/",
-    name: "Test 2",
-    external: true,
-  },
-];
 
 export const Header: React.FC<Props> = () => {
   return (
@@ -25,7 +14,7 @@ export const Header: React.FC<Props> = () => {
       <Logo logoClasses="h-8 md:h-12" aria-label={SITE_META.name} />
 
       <NavContainer>
-        <Menu items={items} className="flex space-x-4" />
+        <Menu items={MAIN_MENU} className="flex space-x-4" />
         <ThemeSwitch />
       </NavContainer>
     </Container>
