@@ -14,7 +14,10 @@ export const Logo: React.FC<Props & NativeProps> = ({
 }) => {
   return (
     <Link href="/">
-      <a className="flex items-center justify-between" {...props}>
+      <a
+        className="flex items-center justify-between md:transition md:hover:opacity-75"
+        {...props}
+      >
         <div className="mr-4">
           <RHLogo
             className={`fill-eerie-black dark:fill-white ${logoClasses}`}
