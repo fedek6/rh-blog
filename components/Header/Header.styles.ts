@@ -21,7 +21,8 @@ export const NavContainerDesktop = tw.nav`
 `;
 
 export const NavContainerMobile = tw.nav`
-  ${(p: NavContainerMobileProps) => (p.$isVisible ? "" : "translate-x-full")}
+  ${(p: NavContainerMobileProps) =>
+    p.$isVisible ? "translate-x-0" : "translate-x-full"}
 
   fixed
   top-0
@@ -30,9 +31,9 @@ export const NavContainerMobile = tw.nav`
   h-full
   w-full
   transform
-  bg-gray-200
-  opacity-95
+  bg-platinum
   duration-300
   ease-in-out
-  dark:bg-gray-800
+  dark:bg-eerie-black
+  p-4
 `;
