@@ -6,8 +6,12 @@ export const MAIN_MENU: Array<HybridLink> = [
     name: "Test",
   },
   {
-    href: "/",
+    href: "/test",
     name: "Test 2",
+  },
+  {
+    href: "/",
+    name: "Realhe.ro",
     external: true,
   },
 ];

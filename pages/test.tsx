@@ -7,7 +7,7 @@ const Home: NextPage = () => {
     <Layout>
       <CommonSEO />
       <h1 className="text-3xl font-display font-bold text-english-vermillion">
-        Hello world!
+        This is test page
       </h1>
       <p className="font-mono">Lorem ipsum</p>
     </Layout>
