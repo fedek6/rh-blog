@@ -1,6 +1,6 @@
-export const uniqueId = (function (prefix = "id") {
+export const uniqueId = (function () {
   let counter = 0;
-  return function () {
+  return function (prefix = "id") {
     return `${prefix}-${counter++}`;
   };
 })();
