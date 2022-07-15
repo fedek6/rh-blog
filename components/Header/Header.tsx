@@ -27,9 +27,10 @@ export const Header: React.FC<Props> = () => {
         <Menu items={MAIN_MENU} className="flex space-x-4" />
         <ThemeSwitch />
       </NavContainerDesktop>
-      <NavContainerMobile>
+      <div className="md:hidden">
         <Hamburger onClick={handleHambugerClick} />
-      </NavContainerMobile>
+        <NavContainerMobile $isVisible={isMenuVisible}>aa</NavContainerMobile>
+      </div>
     </Container>
   );
 };
