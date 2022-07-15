@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "./ThemeSwitch.styles";
 import { useTheme } from "next-themes";
+import { Switch } from "@/components/primitives/Switch";
 
 type Props = {};
 
@@ -11,20 +12,21 @@ export const ThemeSwitch: React.FC<Props> = ({ ...props }) => {
   // Prevent hydration error
   React.useEffect(() => setMounted(true), []);
 
+  const isDark = theme === "dark" || resolvedTheme === "dark";
+
   const handleThemeSwitch = () => {
-    setTheme(theme === "dark" || resolvedTheme === "dark" ? "light" : "dark");
+    setTheme(isDark ? "light" : "dark");
   };
 
   return (
     <Container {...props}>
-      <button
-        aria-label="Toggle Dark Mode"
-        type="button"
-        className="ml-1 mr-1 h-8 w-8 rounded p-1 sm:ml-4"
-        onClick={handleThemeSwitch}
-      >
-        {mounted && theme}
-      </button>
+      {mounted && (
+        <Switch
+          isChecked={isDark}
+          onChange={handleThemeSwitch}
+          aria-label="Change theme"
+        />
+      )}
     </Container>
   );
 };
