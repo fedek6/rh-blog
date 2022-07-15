@@ -1,3 +1,3 @@
 import tw from "tailwind-styled-components";
 
-export const Container = tw.div``;
+export const Container = tw.div`pl-4`;
