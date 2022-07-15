@@ -1,5 +1,5 @@
 import React from "react";
-import { IconButton } from "../primitives/IconButton";
+import { IconButton } from "@/components/primitives/IconButton";
 import Icon from "./icon.svg";
 
 type Props = {
