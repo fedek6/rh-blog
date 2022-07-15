@@ -6,12 +6,7 @@ type Props = {
   logoClasses: string;
 };
 
-type NativeProps = React.ComponentPropsWithoutRef<"a">;
-
-export const Logo: React.FC<Props & NativeProps> = ({
-  logoClasses,
-  ...props
-}) => {
+export const Logo: React.FC<Props> = ({ logoClasses, ...props }) => {
   return (
     <Link href="/">
       <a
