@@ -1,5 +1,5 @@
 import React from "react";
-import { Dot } from "./Switch.styles";
+import { Dot, Background } from "./Switch.styles";
 import { uniqueId } from "@/utils/uniqueId";
 
 type Props = {
@@ -30,7 +30,7 @@ export const Switch: React.FC<Props> = ({
           defaultChecked={isChecked}
           onChange={onChange}
         />
-        <div className="block bg-dark-blue-gray-400 w-14 h-8 rounded-full"></div>
+        <Background />
         <Dot $active={isChecked} />
       </div>
       {label && <div className="ml-3 text-eerie-black">{label}</div>}

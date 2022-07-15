@@ -17,3 +17,11 @@ export const Dot = tw.div`
   rounded-full
   transition
 `;
+
+export const Background = tw.div`
+  block
+  bg-dark-blue-gray-400
+  w-14
+  h-8
+  rounded-full
+`;
