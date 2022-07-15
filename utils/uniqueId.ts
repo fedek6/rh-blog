@@ -1,6 +1,10 @@
 export const uniqueId = (function () {
-  let counter = 0;
+  const iterators = new Map<string, number>();
+
   return function (prefix = "id") {
-    return `${prefix}-${counter++}`;
+    const counter = iterators.has(prefix) ? iterators.get(prefix)! + 1 : 1;
+    iterators.set(prefix, counter);
+
+    return `${prefix}-${counter}`;
   };
 })();
