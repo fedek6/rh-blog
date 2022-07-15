@@ -4,13 +4,18 @@ export const Container = tw.header`
   flex
   items-center
   justify-between
-  py-10
+  py-4
+  md:py-10
 `;
 
-export const NavContainer = tw.nav`
+export const NavContainerDesktop = tw.nav`
   hidden
   md:flex
   items-center
   text-base
   leading-5
+`;
+
+export const NavContainerMobile = tw.nav`
+  md:hidden
 `;
