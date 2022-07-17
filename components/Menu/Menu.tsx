@@ -10,6 +10,8 @@ type NativeProps = React.ComponentPropsWithoutRef<"ul">;
 
 const LINK_CLASSES = [
   "text-eerie-black",
+  "font-display",
+  "font-bold",
   "hover:text-english-vermillion",
   "dark:text-white",
   "hover:dark:text-max-yellow-red",
