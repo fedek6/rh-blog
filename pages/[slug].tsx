@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { CommonSEO } from "@/components/SEO";
-import { getSortedContent, getSlugs } from "@/lib/content";
+import { getSortedContent, getAllSlugs } from "@/lib/content";
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
@@ -20,7 +20,7 @@ const Slug: NextPage<Props> = ({ slug }) => {
 };
 
 const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = await getSlugs("blog");
+  const slugs = await getAllSlugs("blog");
 
   const paths = slugs.map((slug) => ({
     params: {
