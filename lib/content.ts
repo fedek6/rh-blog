@@ -4,6 +4,15 @@ import path from "path";
 import * as matter from "gray-matter";
 import { getAllDirectories } from "./files";
 
+export type Frontmatter = {
+  title: string;
+  date: string;
+  tags: string[];
+  draft: boolean;
+  summary: string;
+  slug: string;
+};
+
 /**
  * Generate full path to content directory.
  *
@@ -49,8 +58,11 @@ export async function getAllFrontmatter(directory: string) {
   for (let dir of dirs) {
     const FILE_PATH = path.join(CONTENT_PATH, dir, "index.mdx");
     const file = matter.read(FILE_PATH);
+    const data = { ...(file.data as Frontmatter), slug: dir };
 
-    content.push(file);
+    if (!data.draft) {
+      content.push(data);
+    }
   }
 
   return content;
@@ -62,8 +74,6 @@ export async function getAllFrontmatter(directory: string) {
  * @param files
  * @returns
  */
-export function sortFrontmatterByDate(files: matter.GrayMatterFile<string>[]) {
-  return [...files].sort(
-    (a, b) => Date.parse(b.data.date) - Date.parse(a.data.date)
-  );
+export function sortFrontmatterByDate(files: Frontmatter[]): Frontmatter[] {
+  return [...files].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 }
