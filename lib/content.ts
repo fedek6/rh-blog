@@ -77,3 +77,19 @@ export async function getAllFrontmatter(directory: string) {
 export function sortFrontmatterByDate(files: Frontmatter[]): Frontmatter[] {
   return [...files].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 }
+
+/**
+ *
+ * @param count
+ * @param postsPerPage
+ * @returns
+ */
+export function getPagination(count: number, postsPerPage: number) {
+  const pages = Math.ceil(count / postsPerPage);
+  const pagination = Array.from(Array(pages), (_, i) => i);
+
+  return {
+    pages,
+    pagination,
+  };
+}
