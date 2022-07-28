@@ -1,11 +1,12 @@
 import { Layout } from "@/components/Layout";
 import { CommonSEO } from "@/components/SEO";
+import { Pagination } from "@/components/Pagination";
 import {
-  getSortedContent,
   getAllFrontmatter,
   sortFrontmatterByDate,
   Frontmatter,
   getPagination,
+  Pagination as PaginationType,
 } from "@/lib/content";
 import { CONTENT_CONFIG } from "@/config/content";
 import Link from "next/link";
@@ -13,7 +14,7 @@ import type { NextPage, GetStaticProps } from "next";
 
 type Props = {
   posts: Frontmatter[];
-  pagination: ReturnType<typeof getPagination>;
+  pagination: PaginationType;
 };
 
 const Home: NextPage<Props> = ({ posts, pagination }) => {
@@ -34,6 +35,8 @@ const Home: NextPage<Props> = ({ posts, pagination }) => {
           </Link>
         </div>
       ))}
+
+      <Pagination pagination={pagination} prefix="page" removePrefix />
     </Layout>
   );
 };
