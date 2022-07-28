@@ -1,5 +1,3 @@
-import fs from "fs";
-import { readdir } from "node:fs/promises";
 import path from "path";
 import * as matter from "gray-matter";
 import { getAllDirectories } from "./files";
@@ -12,6 +10,8 @@ export type Frontmatter = {
   summary: string;
   slug: string;
 };
+
+export type Pagination = ReturnType<typeof getPagination>;
 
 /**
  * Generate full path to content directory.
@@ -84,12 +84,17 @@ export function sortFrontmatterByDate(files: Frontmatter[]): Frontmatter[] {
  * @param postsPerPage
  * @returns
  */
-export function getPagination(count: number, postsPerPage: number) {
-  const pages = Math.ceil(count / postsPerPage);
-  const pagination = Array.from(Array(pages), (_, i) => i);
+export function getPagination(
+  totalCount: number,
+  postsPerPage: number,
+  current = 1
+) {
+  const count = Math.ceil(totalCount / postsPerPage);
+  const pages = Array.from(Array(count), (_, i) => i + 1);
 
   return {
+    count,
     pages,
-    pagination,
+    current,
   };
 }
