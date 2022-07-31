@@ -69,6 +69,41 @@ export async function getAllFrontmatter(directory: string) {
 }
 
 /**
+ * Count number of posts in a directory.
+ * @param directory
+ * @returns Promise<number>
+ */
+export async function getPostsCount(directory: string) {
+  const CONTENT_PATH = getContentPath(directory);
+
+  return (await getAllDirectories(CONTENT_PATH)).length;
+}
+
+/**
+ * Get ready object with pagination params.
+ * @param directory
+ * @param postsPerPage
+ * @param removeFirst
+ * @returns
+ */
+export async function getPaginationPaths(
+  directory: string,
+  postsPerPage: number,
+  removeFirst = true
+) {
+  const postCount = await getPostsCount(directory);
+  const pagination = getPagination(postCount, postsPerPage);
+
+  return pagination.pages
+    .filter((page) => (removeFirst ? page > 1 : true))
+    .map((page) => ({
+      params: {
+        number: `${page}`,
+      },
+    }));
+}
+
+/**
  * Sort frontmatter content DESC.
  *
  * @param files
