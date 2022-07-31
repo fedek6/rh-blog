@@ -19,17 +19,25 @@ export const Pagination: React.FC<Props> = ({
   const isFirst = current === 1;
   const isLast = current === pages[pages.length - 1];
 
+  let previousElm: React.ReactElement;
+
+  // Previous link logic
+  if (isFirst) {
+    previousElm = <span>Previous</span>;
+  } else {
+    const href =
+      current == 2 && removePrefix ? `/` : `/${prefix}/${current - 1}`;
+
+    previousElm = (
+      <Link href={href}>
+        <a>Previous</a>
+      </Link>
+    );
+  }
+
   return (
     <ul>
-      <li>
-        {isFirst ? (
-          <span>Previous</span>
-        ) : (
-          <Link href={`/${prefix}/${current - 1}`}>
-            <a>Previous</a>
-          </Link>
-        )}
-      </li>
+      <li>{previousElm}</li>
       {pages.map((i) => {
         let href = "";
         let text = `${i}`;
