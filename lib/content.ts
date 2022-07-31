@@ -133,3 +133,18 @@ export function getPagination(
     current,
   };
 }
+
+/**
+ *
+ * @param posts
+ * @param currentPage
+ * @param perPage
+ * @returns
+ */
+export function slicePosts<T>(
+  posts: Array<T>,
+  currentPage: number,
+  perPage: number
+) {
+  return posts.slice((currentPage - 1) * perPage, currentPage * perPage);
+}
