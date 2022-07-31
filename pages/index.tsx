@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout";
 import { CommonSEO } from "@/components/SEO";
 import { Pagination } from "@/components/Pagination";
+import { Excerpt } from "@/components/content/Post";
 import {
   getAllFrontmatter,
   sortFrontmatterByDate,
@@ -9,7 +10,6 @@ import {
   Pagination as PaginationType,
 } from "@/lib/content";
 import { CONTENT_CONFIG } from "@/config/content";
-import Link from "next/link";
 import type { NextPage, GetStaticProps } from "next";
 
 type Props = {
@@ -22,18 +22,8 @@ const Home: NextPage<Props> = ({ posts, pagination }) => {
     <Layout>
       <CommonSEO />
 
-      <pre>{JSON.stringify(pagination)}</pre>
-
       {posts.map((post) => (
-        <div key={post.date}>
-          <h1 className="text-3xl font-display font-bold text-english-vermillion">
-            {post.title}
-          </h1>
-          <p>{post.summary}</p>
-          <Link href={`/${post.slug}`}>
-            <a className="overline">Read more</a>
-          </Link>
-        </div>
+        <Excerpt {...post} key={post.slug} />
       ))}
 
       <Pagination pagination={pagination} prefix="page" removePrefix />
