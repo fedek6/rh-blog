@@ -148,3 +148,9 @@ export function slicePosts<T>(
 ) {
   return posts.slice((currentPage - 1) * perPage, currentPage * perPage);
 }
+
+export function getPostContent(slug: string, directory: string) {
+  const path = getContentPath(directory, slug, "index.mdx");
+
+  return matter.read(path);
+}
