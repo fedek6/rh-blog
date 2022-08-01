@@ -1,26 +1,41 @@
 import { Layout } from "@/components/Layout";
 import { CommonSEO } from "@/components/SEO";
 import { Frontmatter, getAllSlugs, getPostContent } from "@/lib/content";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
 interface Props {
   slug: string;
   post: Frontmatter;
+  source: MDXRemoteSerializeResult<
+    Record<string, unknown>,
+    Record<string, string>
+  >;
 }
 
 interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-const Slug: NextPage<Props> = ({ slug, post }) => {
+const components = {
+  h2: (props: any) => (
+    <h2
+      className="text-2xl font-display font-bold text-english-vermillion"
+      {...props}
+    />
+  ),
+};
+
+const Slug: NextPage<Props> = ({ slug, post, source }) => {
   return (
     <Layout>
       <CommonSEO />
       <h1 className="text-3xl font-display font-bold text-english-vermillion">
-        {slug}
+        {post.title}
       </h1>
-      {JSON.stringify(post)}
+      <MDXRemote {...source} components={components} />
     </Layout>
   );
 };
@@ -44,13 +59,14 @@ const getStaticProps: GetStaticProps<Props> = async (context) => {
   const params = context.params as Params;
   const file = getPostContent(params.slug, "blog");
 
-  const content = file.content;
   const post = file.data as Frontmatter;
+  const source = await serialize(file.content);
 
   return {
     props: {
       ...params,
       post,
+      source,
     },
   };
 };
