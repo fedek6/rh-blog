@@ -1,20 +1,26 @@
 import { Layout } from "@/components/Layout";
 import { CommonSEO } from "@/components/SEO";
-import { getSortedContent, getAllSlugs } from "@/lib/content";
+import { Frontmatter, getAllSlugs, getPostContent } from "@/lib/content";
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
-interface Props extends ParsedUrlQuery {
+interface Props {
+  slug: string;
+  post: Frontmatter;
+}
+
+interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-const Slug: NextPage<Props> = ({ slug }) => {
+const Slug: NextPage<Props> = ({ slug, post }) => {
   return (
     <Layout>
       <CommonSEO />
       <h1 className="text-3xl font-display font-bold text-english-vermillion">
         {slug}
       </h1>
+      {JSON.stringify(post)}
     </Layout>
   );
 };
@@ -35,11 +41,16 @@ const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const params = context.params as Props;
+  const params = context.params as Params;
+  const file = getPostContent(params.slug, "blog");
+
+  const content = file.content;
+  const post = file.data as Frontmatter;
 
   return {
     props: {
       ...params,
+      post,
     },
   };
 };
