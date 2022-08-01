@@ -20,6 +20,7 @@ export const Pagination: React.FC<Props> = ({
   const isLast = current === pages[pages.length - 1];
 
   let previousElm: React.ReactElement;
+  let nextElm: React.ReactElement;
 
   // Previous link logic
   if (isFirst) {
@@ -31,6 +32,19 @@ export const Pagination: React.FC<Props> = ({
     previousElm = (
       <Link href={href}>
         <a>Previous</a>
+      </Link>
+    );
+  }
+
+  // Next link logic
+  if (isLast) {
+    nextElm = <span>Next</span>;
+  } else {
+    const href = `/${prefix}/${current + 1}`;
+
+    nextElm = (
+      <Link href={`/${prefix}/${current + 1}`}>
+        <a>Next</a>
       </Link>
     );
   }
@@ -60,15 +74,7 @@ export const Pagination: React.FC<Props> = ({
           </li>
         );
       })}
-      <li>
-        {isLast ? (
-          <span>Next</span>
-        ) : (
-          <Link href={`/${prefix}/${current + 1}`}>
-            <a>Next</a>
-          </Link>
-        )}
-      </li>
+      <li>{nextElm}</li>
     </ul>
   );
 };
