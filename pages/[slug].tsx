@@ -3,6 +3,8 @@ import { CommonSEO } from "@/components/SEO";
 import { Frontmatter, getAllSlugs, getPostContent } from "@/lib/content";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import imageSize from "rehype-img-size";
+import Image from "next/image";
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
@@ -25,6 +27,10 @@ const components = {
       className="text-2xl font-display font-bold text-english-vermillion"
       {...props}
     />
+  ),
+  img: (props: any) => (
+    // eslint-disable-next-line jsx-a11y/alt-text
+    <Image {...props} layout="responsive" loading="lazy" />
   ),
 };
 
@@ -60,7 +66,15 @@ const getStaticProps: GetStaticProps<Props> = async (context) => {
   const file = getPostContent(params.slug, "blog");
 
   const post = file.data as Frontmatter;
-  const source = await serialize(file.content);
+  const source = await serialize(file.content, {
+    mdxOptions: {
+      // use the image size plugin, you can also specify which folder to load images from
+      // in my case images are in /public/images/, so I just prepend 'public'
+
+      // @ts-ignore
+      rehypePlugins: [[imageSize, { dir: "public" }]],
+    },
+  });
 
   return {
     props: {
