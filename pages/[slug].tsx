@@ -5,6 +5,12 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import imageSize from "rehype-img-size";
 import Image from "next/image";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import {
+  dark,
+  dracula,
+  prism,
+} from "react-syntax-highlighter/dist/cjs/styles/prism";
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
@@ -32,6 +38,21 @@ const components = {
     // eslint-disable-next-line jsx-a11y/alt-text
     <Image {...props} layout="responsive" loading="lazy" />
   ),
+  code({ node, inline, className, children, ...props }: any) {
+    const match = /language-(\w+)/.exec(className || "");
+    return !inline && match ? (
+      <SyntaxHighlighter
+        style={dracula} // try passing different color schemes, drak, dracula etc.
+        language={match[1]}
+        PreTag="div"
+        {...props}
+      >
+        {String(children).replace(/\n$/, "")}
+      </SyntaxHighlighter>
+    ) : (
+      <code>{children}</code>
+    );
+  },
 };
 
 const Slug: NextPage<Props> = ({ slug, post, source }) => {
