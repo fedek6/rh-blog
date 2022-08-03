@@ -1,6 +1,7 @@
 import path from "path";
 import * as matter from "gray-matter";
 import { getAllDirectories } from "./files";
+import { readdir, copyFile } from "node:fs/promises";
 
 export type Frontmatter = {
   title: string;
@@ -153,4 +154,30 @@ export function getPostContent(slug: string, directory: string) {
   const path = getContentPath(directory, slug, "index.mdx");
 
   return matter.read(path);
+}
+
+/**
+ *
+ * @param slug
+ * @param directory
+ */
+export async function publishPostAssets(slug: string, directory: string) {
+  const postPath = getContentPath(directory, slug);
+  const files = await readdir(postPath, {
+    withFileTypes: false,
+  });
+
+  const extensions = [".jpg"];
+
+  const images = files.filter((file) =>
+    extensions.includes(path.extname(file))
+  );
+
+  for (const image of images) {
+    await copyFile(
+      path.join(postPath, image),
+      path.join(process.cwd(), "public", "images", image)
+    );
+  }
+  console.log(images);
 }

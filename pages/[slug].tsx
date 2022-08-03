@@ -1,6 +1,11 @@
 import { Layout } from "@/components/Layout";
 import { CommonSEO } from "@/components/SEO";
-import { Frontmatter, getAllSlugs, getPostContent } from "@/lib/content";
+import {
+  Frontmatter,
+  getAllSlugs,
+  getPostContent,
+  publishPostAssets,
+} from "@/lib/content";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import imageSize from "rehype-img-size";
@@ -85,6 +90,7 @@ const getStaticPaths: GetStaticPaths = async () => {
 const getStaticProps: GetStaticProps<Props> = async (context) => {
   const params = context.params as Params;
   const file = getPostContent(params.slug, "blog");
+  await publishPostAssets(params.slug, "blog");
 
   const post = file.data as Frontmatter;
   const source = await serialize(file.content, {
