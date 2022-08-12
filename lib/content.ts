@@ -26,14 +26,6 @@ const getContentPath = (...dirs: string[]) => {
 };
 
 /**
- *
- * @param directory
- */
-export async function getSortedContent(directory: string) {
-  const CONTENT_PATH = getContentPath(directory);
-}
-
-/**
  * Slug generator.
  *
  * @param directory - Content directory name
@@ -72,6 +64,7 @@ export async function getAllFrontmatter(directory: string) {
 
 /**
  * Count number of posts in a directory.
+ *
  * @param directory
  * @returns Promise<number>
  */
@@ -83,6 +76,7 @@ export async function getPostsCount(directory: string) {
 
 /**
  * Get ready object with pagination params.
+ *
  * @param directory
  * @param postsPerPage
  * @param removeFirst
@@ -116,6 +110,7 @@ export function sortFrontmatterByDate(files: Frontmatter[]): Frontmatter[] {
 }
 
 /**
+ * Get pagination object.
  *
  * @param count
  * @param postsPerPage
@@ -137,6 +132,7 @@ export function getPagination(
 }
 
 /**
+ * Slice posts for pagination.
  *
  * @param posts
  * @param currentPage
@@ -151,6 +147,13 @@ export function slicePosts<T>(
   return posts.slice((currentPage - 1) * perPage, currentPage * perPage);
 }
 
+/**
+ * Get specific post content.
+ *
+ * @param slug
+ * @param directory
+ * @returns
+ */
 export function getPostContent(slug: string, directory: string) {
   const path = getContentPath(directory, slug, "index.mdx");
 
@@ -159,6 +162,7 @@ export function getPostContent(slug: string, directory: string) {
 
 /**
  * Copy images to slug dirs.
+ *
  * @param slug
  * @param directory
  */
