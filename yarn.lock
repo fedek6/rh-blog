@@ -1042,6 +1042,14 @@
     "minimatch" "^3.1.2"
     "strip-json-comments" "^3.1.1"
 
+"@fedek6/rehype-img@^1.0.0":
+  "integrity" "sha512-m6aMuo0WjUsVxyeW3F/WFdlDoa4vGhju4irqBvOc3IrkjLN2YRY+1rNejsiTqYN93IaIM4W6dPDvhFuD58+Nfg=="
+  "resolved" "https://registry.npmjs.org/@fedek6/rehype-img/-/rehype-img-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "image-size" "^1.0.2"
+    "unist-util-visit" "^4.1.0"
+
 "@hapi/hoek@^9.0.0":
   "integrity" "sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ=="
   "resolved" "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.3.0.tgz"
@@ -3236,14 +3244,7 @@
   "resolved" "https://registry.npmjs.org/ignore/-/ignore-5.2.0.tgz"
   "version" "5.2.0"
 
-"image-size@^0.9.3":
-  "integrity" "sha512-KRVgLNZkr00YGN0qn9MlIrmlxbRhsCcEb1Byq3WKGnIV4M48iD185cprRtaoK4t5iC+ym2Q5qlArxZ/V1yzDgA=="
-  "resolved" "https://registry.npmjs.org/image-size/-/image-size-0.9.7.tgz"
-  "version" "0.9.7"
-  dependencies:
-    "queue" "6.0.2"
-
-"image-size@^1.0.0":
+"image-size@^1.0.2":
   "integrity" "sha512-xfOoWjceHntRb3qFCrh5ZFORYH8XCdYpASltMhZ/Q0KZiOwjdE/Yl2QCiWdwD+lygV5bMCvauzgu5PxBX/Yerg=="
   "resolved" "https://registry.npmjs.org/image-size/-/image-size-1.0.2.tgz"
   "version" "1.0.2"
@@ -4828,22 +4829,6 @@
   dependencies:
     "jsesc" "~0.5.0"
 
-"rehype-image-size@^1.0.0":
-  "integrity" "sha512-g85hkmxTc3RCXCMloCk5Xx4gPV7h4p53KOhz+3oBQ/0kVsvfaB/eLqKIOu1zSp9ghhcuqMam6aBKDaJoZZU74w=="
-  "resolved" "https://registry.npmjs.org/rehype-image-size/-/rehype-image-size-1.0.0.tgz"
-  "version" "1.0.0"
-  dependencies:
-    "image-size" "^0.9.3"
-    "unist-util-visit" "^2.0.3"
-
-"rehype-img-size@^1.0.1":
-  "integrity" "sha512-+rLkxF2H3mQULAg3iA2Z2spJQlBcCpApG8sHC47bc0p33ol+ddz+O3gyUcTgk5xX5jGaj1oQOBs/cBy8nIIhoQ=="
-  "resolved" "https://registry.npmjs.org/rehype-img-size/-/rehype-img-size-1.0.1.tgz"
-  "version" "1.0.1"
-  dependencies:
-    "image-size" "^1.0.0"
-    "unist-util-visit" "^4.1.0"
-
 "remark-mdx@^2.0.0":
   "integrity" "sha512-npQagPdczPAv0xN9F8GSi5hJfAe/z6nBjylyfOfjLOmz086ahWrIjlk4BulRfNhA+asutqWxyuT3DFVsxiTVHA=="
   "resolved" "https://registry.npmjs.org/remark-mdx/-/remark-mdx-2.1.2.tgz"
@@ -5460,11 +5445,6 @@
   "resolved" "https://registry.npmjs.org/unist-util-generated/-/unist-util-generated-2.0.0.tgz"
   "version" "2.0.0"
 
-"unist-util-is@^4.0.0":
-  "integrity" "sha512-ZOQSsnce92GrxSqlnEEseX0gi7GH9zTJZ0p9dtu87WRb/37mMPO2Ilx1s/t9vBHrFhbgweUwb+t7cIn5dxPhZg=="
-  "resolved" "https://registry.npmjs.org/unist-util-is/-/unist-util-is-4.1.0.tgz"
-  "version" "4.1.0"
-
 "unist-util-is@^5.0.0":
   "integrity" "sha512-F5CZ68eYzuSvJjGhCLPL3cYx45IxkqXSetCcRgUXtbcm50X2L9oOWQlfUfDdAf+6Pd27YDblBfdtmsThXmwpbQ=="
   "resolved" "https://registry.npmjs.org/unist-util-is/-/unist-util-is-5.1.1.tgz"
@@ -5499,14 +5479,6 @@
   dependencies:
     "@types/unist" "^2.0.0"
 
-"unist-util-visit-parents@^3.0.0":
-  "integrity" "sha512-1KROIZWo6bcMrZEwiH2UrXDyalAa0uqzWCxCJj6lPOvTve2WkfgCytoDTPaMnodXh1WrXOq0haVYHj99ynJlsg=="
-  "resolved" "https://registry.npmjs.org/unist-util-visit-parents/-/unist-util-visit-parents-3.1.1.tgz"
-  "version" "3.1.1"
-  dependencies:
-    "@types/unist" "^2.0.0"
-    "unist-util-is" "^4.0.0"
-
 "unist-util-visit-parents@^5.0.0":
   "integrity" "sha512-y+QVLcY5eR/YVpqDsLf/xh9R3Q2Y4HxkZTp7ViLDU6WtJCEcPmRzW1gpdWDCDIqIlhuPDXOgttqPlykrHYDekg=="
   "resolved" "https://registry.npmjs.org/unist-util-visit-parents/-/unist-util-visit-parents-5.1.0.tgz"
@@ -5514,15 +5486,6 @@
   dependencies:
     "@types/unist" "^2.0.0"
     "unist-util-is" "^5.0.0"
-
-"unist-util-visit@^2.0.3":
-  "integrity" "sha512-iJ4/RczbJMkD0712mGktuGpm/U4By4FfDonL7N/9tATGIF4imikjOuagyMY53tnZq3NP6BcmlrHhEKAfGWjh7Q=="
-  "resolved" "https://registry.npmjs.org/unist-util-visit/-/unist-util-visit-2.0.3.tgz"
-  "version" "2.0.3"
-  dependencies:
-    "@types/unist" "^2.0.0"
-    "unist-util-is" "^4.0.0"
-    "unist-util-visit-parents" "^3.0.0"
 
 "unist-util-visit@^4.0.0", "unist-util-visit@^4.1.0":
   "integrity" "sha512-n7lyhFKJfVZ9MnKtqbsqkQEk5P1KShj0+//V7mAcoI6bpbUjh3C/OG8HVD+pBihfh6Ovl01m8dkcv9HNqYajmQ=="
