@@ -8,7 +8,7 @@ import {
 } from "@/lib/content";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import imageSize from "rehype-img-size";
+import imageSize from "@fedek6/rehype-img-src";
 import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
@@ -18,6 +18,8 @@ import {
 } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import type { ParsedUrlQuery } from "querystring";
+import path from "path";
+import { setImageSrc } from "@fedek6/rehype-img";
 
 interface Props {
   slug: string;
@@ -98,8 +100,15 @@ const getStaticProps: GetStaticProps<Props> = async (context) => {
       // use the image size plugin, you can also specify which folder to load images from
       // in my case images are in /public/images/, so I just prepend 'public'
 
-      // @ts-ignore
-      rehypePlugins: [[imageSize, { dir: "public" }]],
+      rehypePlugins: [
+        [
+          setImageSrc,
+          {
+            dir: "public/images/hello-world-3/",
+            url: "/images/hello-world-3/",
+          },
+        ],
+      ],
     },
   });
 
