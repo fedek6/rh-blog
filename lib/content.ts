@@ -1,7 +1,8 @@
 import path from "path";
 import * as matter from "gray-matter";
 import { getAllDirectories } from "./files";
-import { readdir, copyFile } from "node:fs/promises";
+import { readdir, copyFile, mkdir } from "node:fs/promises";
+import { existsSync } from "fs";
 
 export type Frontmatter = {
   title: string;
@@ -157,12 +158,13 @@ export function getPostContent(slug: string, directory: string) {
 }
 
 /**
- *
+ * Copy images to slug dirs.
  * @param slug
  * @param directory
  */
 export async function publishPostAssets(slug: string, directory: string) {
   const postPath = getContentPath(directory, slug);
+  const publicAssetsPath = path.join(process.cwd(), "public", "images", slug);
   const files = await readdir(postPath, {
     withFileTypes: false,
   });
@@ -173,11 +175,20 @@ export async function publishPostAssets(slug: string, directory: string) {
     extensions.includes(path.extname(file))
   );
 
-  for (const image of images) {
-    await copyFile(
-      path.join(postPath, image),
-      path.join(process.cwd(), "public", "images", image)
-    );
+  // If there are some assets to publish.
+  if (images.length > 0) {
+    if (!existsSync(publicAssetsPath)) {
+      await mkdir(publicAssetsPath, {
+        recursive: true,
+      });
+    }
+
+    for (const image of images) {
+      const imagePath = path.join(publicAssetsPath, image);
+
+      if (!existsSync(imagePath)) {
+        await copyFile(path.join(postPath, image), imagePath);
+      }
+    }
   }
-  console.log(images);
 }
