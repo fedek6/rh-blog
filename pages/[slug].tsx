@@ -8,7 +8,6 @@ import {
 } from "@/lib/content";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import imageSize from "@fedek6/rehype-img-src";
 import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
