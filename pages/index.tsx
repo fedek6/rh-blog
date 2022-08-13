@@ -35,9 +35,11 @@ export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   let posts = await getAllFrontmatter("blog");
-  posts = sortFrontmatterByDate(posts);
 
-  const paginatedPosts = posts.slice(0, CONTENT_CONFIG.postsPerPage);
+  const paginatedPosts = sortFrontmatterByDate(posts).slice(
+    0,
+    CONTENT_CONFIG.postsPerPage
+  );
 
   const pagination = getPagination(posts.length, CONTENT_CONFIG.postsPerPage);
 
