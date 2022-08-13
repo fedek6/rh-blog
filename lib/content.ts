@@ -11,6 +11,7 @@ export type Frontmatter = {
   draft: boolean;
   summary: string;
   slug: string;
+  content?: string;
 };
 
 export type Pagination = ReturnType<typeof getPagination>;
@@ -52,7 +53,11 @@ export async function getAllFrontmatter(directory: string) {
   for (let dir of dirs) {
     const FILE_PATH = path.join(CONTENT_PATH, dir, "index.mdx");
     const file = matter.read(FILE_PATH);
-    const data = { ...(file.data as Frontmatter), slug: dir };
+    const data = {
+      ...(file.data as Frontmatter),
+      slug: dir,
+      content: file.content,
+    };
 
     if (!data.draft) {
       content.push(data);
