@@ -52,10 +52,9 @@ const getStaticProps: GetStaticProps<Props> = async (context) => {
   const currentPage = parseInt(params.number);
 
   let posts = await getAllFrontmatter("blog");
-  posts = sortFrontmatterByDate(posts);
 
   const paginatedPosts = slicePosts(
-    posts,
+    sortFrontmatterByDate(posts),
     currentPage,
     CONTENT_CONFIG.postsPerPage
   );
