@@ -9,14 +9,16 @@ import * as path from "path";
     const contentPath = getContentPath("search");
 
     const search = posts.map((post) => {
-      let content = post.title;
-      content += " " + post.summary;
-      content += " " + post.tags.join(", ");
-      content += " " + removeMd(post.content);
+      let blob = post.title;
+      blob += " " + post.summary;
+      blob += " " + post.tags.join(", ");
+      blob += " " + removeMd(post.content);
 
       return {
         slug: `blog/${post.slug}`,
-        content,
+        title: post.title,
+        summary: post.summary,
+        blob,
       };
     });
 
