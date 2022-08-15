@@ -2,9 +2,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import searchCache from "@/data/search/cache.json";
 
+type SearchResult = Omit<typeof searchCache[0], "blob">;
+
 type Data =
   | {
-      results: string[];
+      results: SearchResult[];
     }
   | {
       error: boolean;
@@ -24,8 +26,12 @@ export default function handler(
 
     if (typeof params.search == "string") {
       const results = searchCache
-        .filter((post) => post.content.includes(params.search!))
-        .map((result) => result.slug);
+        .filter((post) => post.blob.includes(params.search!))
+        .map((result) => ({
+          slug: result.slug,
+          title: result.title,
+          summary: result.summary,
+        }));
 
       res.status(200).json({ results });
     } else {
