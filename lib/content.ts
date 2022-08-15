@@ -22,7 +22,7 @@ export type Pagination = ReturnType<typeof getPagination>;
  * @param dirs - Multiple directories to glue into content path.
  * @returns Path to content directory.
  */
-const getContentPath = (...dirs: string[]) => {
+export const getContentPath = (...dirs: string[]) => {
   return path.join(process.cwd(), "data", ...dirs);
 };
 
