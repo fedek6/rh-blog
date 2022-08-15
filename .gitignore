@@ -36,3 +36,6 @@ yarn-error.log*
 
 # copied assets
 /public/images/*
+
+# search cache
+/data/search/*
