@@ -1,35 +1,29 @@
 import { Layout } from "@/components/Layout";
 import { CommonSEO } from "@/components/SEO";
 import {
-  getPagination,
-  getPaginationPaths,
   getAllFrontmatter,
-  sortFrontmatterByDate,
-  Pagination as PaginationType,
   Frontmatter,
-  slicePosts,
   getTags,
   filterPostsByTag,
 } from "@/lib/content";
-import { Pagination } from "@/components/Pagination";
 import { Excerpt } from "@/components/content/Post";
-import { CONTENT_CONFIG } from "@/config/content";
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
 type Props = {
   posts: Frontmatter[];
+  tag: string;
 };
 
 interface Params extends ParsedUrlQuery {
   tag: string;
 }
 
-const Tag: NextPage<Props> = ({ posts }) => {
+const Tag: NextPage<Props> = ({ posts, tag }) => {
   return (
     <Layout>
       <CommonSEO />
-
+      <h1>Tag: {tag}</h1>
       {posts.map((post) => (
         <Excerpt {...post} key={post.slug} />
       ))}
@@ -56,14 +50,13 @@ const getStaticPaths: GetStaticPaths = async () => {
 const getStaticProps: GetStaticProps<Props> = async (context) => {
   const params = context.params as Params;
 
-  // console.log(params.tag);
-
   let posts = await getAllFrontmatter("blog");
   const filteredPosts = filterPostsByTag(posts, params.tag);
 
   return {
     props: {
       posts: filteredPosts,
+      tag: params.tag,
     },
   };
 };
