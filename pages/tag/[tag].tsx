@@ -8,6 +8,8 @@ import {
   Pagination as PaginationType,
   Frontmatter,
   slicePosts,
+  getTags,
+  filterPostsByTag,
 } from "@/lib/content";
 import { Pagination } from "@/components/Pagination";
 import { Excerpt } from "@/components/content/Post";
@@ -17,42 +19,33 @@ import type { ParsedUrlQuery } from "querystring";
 
 type Props = {
   posts: Frontmatter[];
-  pagination: PaginationType;
 };
 
 interface Params extends ParsedUrlQuery {
-  tag: string[];
+  tag: string;
 }
 
-const Tag: NextPage<Props> = ({ posts, pagination }) => {
+const Tag: NextPage<Props> = ({ posts }) => {
   return (
     <Layout>
       <CommonSEO />
-      {JSON.stringify(pagination)}
 
       {posts.map((post) => (
         <Excerpt {...post} key={post.slug} />
       ))}
-      <Pagination pagination={pagination} prefix="page" removePrefix />
     </Layout>
   );
 };
 
 const getStaticPaths: GetStaticPaths = async () => {
   // const paths = await getPaginationPaths("blog", CONTENT_CONFIG.postsPerPage);
+  const tags = await getTags("blog");
 
-  const paths = [
-    {
-      params: {
-        tag: ["test", "1"],
-      },
+  const paths = tags.map((tag) => ({
+    params: {
+      tag,
     },
-    {
-      params: {
-        tag: ["dupa", "1"],
-      },
-    },
-  ];
+  }));
 
   return {
     paths,
@@ -62,29 +55,15 @@ const getStaticPaths: GetStaticPaths = async () => {
 
 const getStaticProps: GetStaticProps<Props> = async (context) => {
   const params = context.params as Params;
-  const [tag, number] = params.tag;
-  const currentPage = number ? parseInt(number) : 0;
 
-  console.log(tag);
+  // console.log(params.tag);
 
   let posts = await getAllFrontmatter("blog");
-
-  const paginatedPosts = slicePosts(
-    sortFrontmatterByDate(posts),
-    currentPage,
-    CONTENT_CONFIG.postsPerPage
-  );
-
-  const pagination = getPagination(
-    posts.length,
-    CONTENT_CONFIG.postsPerPage,
-    currentPage
-  );
+  const filteredPosts = filterPostsByTag(posts, params.tag);
 
   return {
     props: {
-      posts: paginatedPosts,
-      pagination,
+      posts: filteredPosts,
     },
   };
 };
