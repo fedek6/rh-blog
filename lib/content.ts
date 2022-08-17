@@ -201,3 +201,25 @@ export async function publishPostAssets(slug: string, directory: string) {
     }
   }
 }
+
+/**
+ * Return array of unique tags.
+ *
+ * @param directory
+ * @returns
+ */
+export async function getTags(directory: string) {
+  const posts = await getAllFrontmatter(directory);
+
+  const tags = posts
+    .map((post) => post.tags)
+    .flat()
+    .reduce(
+      (unique: string[], item) =>
+        unique.includes(item) ? unique : [...unique, item],
+      []
+    )
+    .sort();
+
+  return tags;
+}
