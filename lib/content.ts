@@ -105,7 +105,7 @@ export async function getPaginationPaths(
 }
 
 /**
- * Sort frontmatter content DESC.
+ * Sort frontmatter content by date DESC.
  *
  * @param files
  * @returns
@@ -222,4 +222,17 @@ export async function getTags(directory: string) {
     .sort();
 
   return tags;
+}
+
+/**
+ * Sort frontmatter content by date DESC.
+ *
+ * @param files
+ * @returns
+ */
+export function filterPostsByTag(
+  files: Frontmatter[],
+  tag: string
+): Frontmatter[] {
+  return [...files].filter((file) => file.tags.includes(tag));
 }
