@@ -3,7 +3,7 @@ import {
   Container,
   NavContainerDesktop,
   NavContainerMobile,
-} from "./Header.styles";
+} from "./NavBar.styles";
 import { Logo } from "@/components/common/Logo";
 import { ThemeSwitch } from "@/components/navbar/ThemeSwitch";
 import { SITE_META } from "@/config/meta";
@@ -14,7 +14,7 @@ import { MAIN_MENU } from "@/config/menu";
 
 type Props = {};
 
-export const Header: React.FC<Props> = () => {
+export const NavBar: React.FC<Props> = () => {
   const [isMenuVisible, setIsMenuVisible] = React.useState(false);
   const menuEl = React.useRef<HTMLElement>(null);
 
