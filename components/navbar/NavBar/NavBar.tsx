@@ -5,12 +5,10 @@ import {
   NavContainerMobile,
 } from "./NavBar.styles";
 import { Logo } from "@/components/common/Logo";
-import { ThemeSwitch } from "@/components/navbar/ThemeSwitch";
 import { SITE_META } from "@/config/meta";
-import { Menu } from "@/components/navbar/Menu";
 import { Hamburger } from "@/components/navbar/Hamburger";
-import { CloseButton } from "@/components/common/CloseButton";
-import { MAIN_MENU } from "@/config/menu";
+import { OverlayMenu } from "../OverlayMenu/OverlayMenu";
+import { DesktopMenu } from "../DesktopMenu/DesktopMenu";
 
 type Props = {};
 
@@ -36,26 +34,20 @@ export const NavBar: React.FC<Props> = () => {
     };
   }, []);
 
-  const handleHambugerClick = () => {
+  const toggleMenu = React.useCallback(() => {
     setIsMenuVisible((isMenuVisible) => !isMenuVisible);
-  };
+  }, []);
 
   return (
     <Container>
       <Logo logoClasses="h-8 md:h-12" aria-label={SITE_META.name} />
       <NavContainerDesktop>
-        <Menu items={MAIN_MENU} className="flex space-x-4" />
-        <ThemeSwitch />
+        <DesktopMenu />
       </NavContainerDesktop>
       <div className="md:hidden">
-        <Hamburger onClick={handleHambugerClick} />
+        <Hamburger onClick={toggleMenu} />
         <NavContainerMobile $isVisible={isMenuVisible} ref={menuEl}>
-          <div className="flex justify-end">
-            <CloseButton onClick={handleHambugerClick} />
-          </div>
-          <nav className="text-xl font-display font-bold pt-10">
-            <Menu items={MAIN_MENU} className="flex flex-col space-y-4" />
-          </nav>
+          <OverlayMenu handleMenuClose={toggleMenu} />
         </NavContainerMobile>
       </div>
     </Container>

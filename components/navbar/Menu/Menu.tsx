@@ -12,16 +12,13 @@ const LINK_CLASSES = [
   "text-eerie-black",
   "font-display",
   "font-bold",
+  "p-4",
   "hover:text-english-vermillion",
   "dark:text-white",
   "hover:dark:text-max-yellow-red",
-  "p-4",
 ];
 
-export const Menu: React.FC<Props & NativeProps> = React.memo(function Menu({
-  items,
-  ...props
-}) {
+export const Menu: React.FC<Props & NativeProps> = ({ items, ...props }) => {
   return (
     <ul {...props}>
       {items.map((item) => (
@@ -31,4 +28,4 @@ export const Menu: React.FC<Props & NativeProps> = React.memo(function Menu({
       ))}
     </ul>
   );
-});
+};
