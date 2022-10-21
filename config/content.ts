@@ -1,3 +1,3 @@
 export const CONTENT_CONFIG = {
-  postsPerPage: 3,
+  postsPerPage: parseInt(process.env.NEXT_PUBLIC_SITE_POSTS_PER_PAGE!) || 3,
 };
