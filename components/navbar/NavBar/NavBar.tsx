@@ -25,7 +25,7 @@ export const NavBar: React.FC<Props> = () => {
     const handleItemClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (target.matches("a")) {
-        setIsMenuVisible(!isMenuVisible);
+        setIsMenuVisible((isMenuVisible) => !isMenuVisible);
       }
     };
 
@@ -34,10 +34,10 @@ export const NavBar: React.FC<Props> = () => {
     return () => {
       current!.removeEventListener("click", handleItemClick);
     };
-  }, [isMenuVisible]);
+  }, []);
 
   const handleHambugerClick = () => {
-    setIsMenuVisible(!isMenuVisible);
+    setIsMenuVisible((isMenuVisible) => !isMenuVisible);
   };
 
   return (

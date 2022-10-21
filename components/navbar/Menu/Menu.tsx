@@ -18,7 +18,10 @@ const LINK_CLASSES = [
   "p-4",
 ];
 
-export const Menu: React.FC<Props & NativeProps> = ({ items, ...props }) => {
+export const Menu: React.FC<Props & NativeProps> = React.memo(function Menu({
+  items,
+  ...props
+}) {
   return (
     <ul {...props}>
       {items.map((item) => (
@@ -28,4 +31,4 @@ export const Menu: React.FC<Props & NativeProps> = ({ items, ...props }) => {
       ))}
     </ul>
   );
-};
+});
