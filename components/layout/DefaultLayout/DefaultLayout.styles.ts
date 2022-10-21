@@ -1,12 +1,13 @@
 import tw from "tailwind-styled-components";
 
 export const Container = tw.div`
-  mx-auto
-  max-w-3xl
-  px-4
-  sm:px-6
-  xl:max-w-6xl
-  xl:px-0
+  antialiased
+
+  bg-platinum-300
+  dark:bg-eerie-black-500
+
+  text-eerie-black
+  dark:text-white
 `;
 
 export const InnerContainer = tw.div`
