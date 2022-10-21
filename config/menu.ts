@@ -1,4 +1,4 @@
-import type { HybridLink } from "@/components/HybridLink";
+import type { HybridLink } from "@/components/common/HybridLink";
 
 export const MAIN_MENU: Array<HybridLink> = [
   {
