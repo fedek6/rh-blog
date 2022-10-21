@@ -1,5 +1,5 @@
 import React from "react";
-import { HybridLink } from "@/components/HybridLink";
+import { HybridLink } from "@/components/common/HybridLink";
 import { uniqueId } from "@/utils/uniqueId";
 
 type Props = {

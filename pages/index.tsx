@@ -1,6 +1,6 @@
-import { Layout } from "@/components/Layout";
+import { DefaultLayout } from "@/components/layout/DefaultLayout";
 import { CommonSEO } from "@/components/SEO";
-import { Pagination } from "@/components/Pagination";
+import { Pagination } from "@/components/common/Pagination";
 import { Excerpt } from "@/components/content/Post";
 import {
   getAllFrontmatter,
@@ -19,7 +19,7 @@ type Props = {
 
 const Home: NextPage<Props> = ({ posts, pagination }) => {
   return (
-    <Layout>
+    <DefaultLayout>
       <CommonSEO />
 
       {posts.map((post) => (
@@ -27,7 +27,7 @@ const Home: NextPage<Props> = ({ posts, pagination }) => {
       ))}
 
       <Pagination pagination={pagination} prefix="page" removePrefix />
-    </Layout>
+    </DefaultLayout>
   );
 };
 

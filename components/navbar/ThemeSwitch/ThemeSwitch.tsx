@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "./ThemeSwitch.styles";
 import { useTheme } from "next-themes";
-import { Switch } from "@/components/primitives/Switch";
+import { Switch } from "@/components/common/Switch";
 
 type Props = {};
 

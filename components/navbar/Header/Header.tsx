@@ -4,12 +4,12 @@ import {
   NavContainerDesktop,
   NavContainerMobile,
 } from "./Header.styles";
-import { Logo } from "@/components/Logo";
-import { ThemeSwitch } from "@/components/ThemeSwitch";
+import { Logo } from "@/components/common/Logo";
+import { ThemeSwitch } from "@/components/navbar/ThemeSwitch";
 import { SITE_META } from "@/config/meta";
-import { Menu } from "@/components/Menu";
-import { Hamburger } from "../Hamburger";
-import { CloseButton } from "../CloseButton";
+import { Menu } from "@/components/navbar/Menu";
+import { Hamburger } from "@/components/navbar/Hamburger";
+import { CloseButton } from "@/components/common/CloseButton";
 import { MAIN_MENU } from "@/config/menu";
 
 type Props = {};

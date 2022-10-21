@@ -1,12 +1,12 @@
 import React from "react";
-import { Container, InnerContainer } from "./Layout.styles";
-import { Header } from "@/components/Header";
+import { Container, InnerContainer } from "./DefaultLayout.styles";
+import { Header } from "@/components/navbar/Header";
 
 type Props = {
   children: React.ReactNode;
 };
 
-export const Layout: React.FC<Props> = ({ children }) => {
+export const DefaultLayout: React.FC<Props> = ({ children }) => {
   return (
     <Container>
       <InnerContainer>
