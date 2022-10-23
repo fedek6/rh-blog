@@ -7,7 +7,7 @@ export const Container = tw.div`
   dark:bg-eerie-black-500
 
   text-eerie-black
-  dark:text-white
+  dark:text-platinum-300
 `;
 
 export const InnerContainer = tw.div`
