@@ -5,16 +5,19 @@ type NavContainerMobileProps = {
 };
 
 export const Container = tw.header`
+  h-16
+  lg:h-20
+  px-5
   flex
   items-center
   justify-between
-  py-4
-  md:py-10
+  bg-platinum-100
+  dark:bg-eerie-black-500
 `;
 
 export const NavContainerDesktop = tw.nav`
   hidden
-  md:flex
+  lg:flex
   items-center
   text-base
   leading-5

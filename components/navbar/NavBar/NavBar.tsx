@@ -4,8 +4,7 @@ import {
   NavContainerDesktop,
   NavContainerMobile,
 } from "./NavBar.styles";
-import { Logo } from "@/components/common/Logo";
-import { SITE_META } from "@/config/meta";
+import { LogoBanner } from "@/components/common/LogoBanner";
 import { Hamburger } from "@/components/navbar/Hamburger";
 import { OverlayMenu } from "../OverlayMenu/OverlayMenu";
 import { DesktopMenu } from "../DesktopMenu/DesktopMenu";
@@ -40,11 +39,11 @@ export const NavBar: React.FC<Props> = () => {
 
   return (
     <Container>
-      <Logo logoClasses="h-8 md:h-12" aria-label={SITE_META.name} />
+      <LogoBanner />
       <NavContainerDesktop>
         <DesktopMenu />
       </NavContainerDesktop>
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <Hamburger onClick={toggleMenu} />
         <NavContainerMobile $isVisible={isMenuVisible} ref={menuEl}>
           <OverlayMenu handleMenuClose={toggleMenu} />
