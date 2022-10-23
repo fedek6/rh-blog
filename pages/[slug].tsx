@@ -1,4 +1,4 @@
-import { Layout } from "@/components/Layout";
+import { DefaultLayout } from "@/components/layout/DefaultLayout";
 import { CommonSEO } from "@/components/SEO";
 import {
   Frontmatter,
@@ -29,13 +29,13 @@ interface Params extends ParsedUrlQuery {
 
 const Slug: NextPage<Props> = ({ slug, post, source }) => {
   return (
-    <Layout>
+    <DefaultLayout>
       <CommonSEO />
       <h1 className="text-3xl font-display font-bold text-english-vermillion">
         {post.title}
       </h1>
       <MDXRemote {...source} components={MDXComponents} />
-    </Layout>
+    </DefaultLayout>
   );
 };
 
