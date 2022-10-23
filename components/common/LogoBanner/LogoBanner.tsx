@@ -2,17 +2,10 @@ import * as React from "react";
 import Link from "next/link";
 import { Logo } from "../Logo";
 
-type Props = {
-  logoClasses: string;
-};
-
-export const LogoBanner: React.FC<Props> = ({ logoClasses, ...props }) => {
+export const LogoBanner = () => {
   return (
     <Link href="/">
-      <a
-        className="flex items-center justify-between md:transition md:hover:opacity-75"
-        {...props}
-      >
+      <a className="flex items-center justify-between md:transition md:hover:opacity-75">
         <div className="mr-4">
           <Logo className="h-8 lg:h-10" />
         </div>

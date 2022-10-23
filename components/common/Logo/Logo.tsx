@@ -1,4 +1,5 @@
 import * as React from "react";
+import { SITE_META } from "@/config/meta";
 import RHLogo from "./logo.svg";
 
 export interface LogoProps {
@@ -12,7 +13,7 @@ export const Logo: React.FC<
     <RHLogo
       className={`fill-eerie-black dark:fill-platinum-100 w-auto ${className}`}
       role="img"
-      aria-label="RealHero logo"
+      aria-label={SITE_META.name}
       {...props}
     />
   );
