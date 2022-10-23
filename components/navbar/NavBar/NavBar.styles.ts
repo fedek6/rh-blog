@@ -8,6 +8,7 @@ export const Container = tw.header`
   h-16
   lg:h-20
   px-5
+  lg:px-20
   flex
   items-center
   justify-between
@@ -23,7 +24,7 @@ export const NavContainerDesktop = tw.nav`
   leading-5
 `;
 
-export const NavContainerMobile = tw.nav`
+export const NavContainerMobile = tw.div`
   ${(p: NavContainerMobileProps) =>
     p.$isVisible ? "translate-x-0" : "translate-x-full"}
 
@@ -34,9 +35,7 @@ export const NavContainerMobile = tw.nav`
   h-full
   w-full
   transform
-  bg-platinum
   duration-300
   ease-in-out
-  dark:bg-eerie-black
   p-4
 `;
