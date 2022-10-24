@@ -1,4 +1,5 @@
 import React from "react";
+import { LogoBanner } from "@/components/common/LogoBanner";
 import { CloseButton } from "@/components/common/CloseButton";
 import { Menu } from "@/components/navbar/Menu";
 import { MAIN_MENU } from "@/config/menu";
@@ -15,7 +16,8 @@ export const OverlayMobile: React.FC<Props> = ({
 }) => {
   return (
     <Container $isVisible={isVisible}>
-      <div className="flex justify-end">
+      <div className="flex justify-between">
+        <LogoBanner />
         <CloseButton onClick={handleMenuToggle} />
       </div>
       <nav className="text-xl font-display font-bold pt-10">

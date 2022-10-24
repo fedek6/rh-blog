@@ -17,7 +17,8 @@ export const Container = tw.div<ContainerProps>`
   transform
   duration-300
   ease-in-out
-  p-4
+  px-5
+  py-3
 
   bg-platinum-100
   dark:bg-eerie-black-500
