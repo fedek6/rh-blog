@@ -1,17 +1,18 @@
 import React from "react";
 import { IconButton } from "@/components/common/IconButton";
-import Icon from "./icon.svg";
+import IconClose from "./icon-close.svg";
 
 type Props = {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const ICON_CLASSES = "fill-eerie-black dark:fill-white h-12 w-12";
-
 export const CloseButton: React.FC<Props> = ({ ...props }) => {
   return (
     <IconButton {...props}>
-      <Icon className={ICON_CLASSES} />
+      <IconClose
+        className="fill-eerie-black dark:fill-platinum-100 h-5 w-5"
+        role="img"
+      />
     </IconButton>
   );
 };
