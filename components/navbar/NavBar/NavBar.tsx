@@ -1,13 +1,9 @@
 import React from "react";
-import {
-  Container,
-  NavContainerDesktop,
-  NavContainerMobile,
-} from "./NavBar.styles";
+import { Container, NavContainerDesktop } from "./NavBar.styles";
 import { LogoBanner } from "@/components/common/LogoBanner";
 import { Hamburger } from "@/components/navbar/Hamburger";
-import { OverlayMenu } from "../OverlayMenu/OverlayMenu";
 import { MenuDesktop } from "../MenuDesktop";
+import { OverlayMobile } from "../OverlayMobile";
 
 type Props = {};
 
@@ -26,10 +22,10 @@ export const NavBar: React.FC<Props> = () => {
       }
     };
 
-    current!.addEventListener("click", handleItemClick);
+    // current!.addEventListener("click", handleItemClick);
 
     return () => {
-      current!.removeEventListener("click", handleItemClick);
+      // current!.removeEventListener("click", handleItemClick);
     };
   }, []);
 
@@ -45,9 +41,10 @@ export const NavBar: React.FC<Props> = () => {
       </NavContainerDesktop>
       <div className="lg:hidden">
         <Hamburger onClick={toggleMenu} />
-        <NavContainerMobile $isVisible={isMenuVisible} ref={menuEl}>
-          <OverlayMenu handleMenuClose={toggleMenu} />
-        </NavContainerMobile>
+        <OverlayMobile
+          isVisible={isMenuVisible}
+          handleMenuToggle={toggleMenu}
+        />
       </div>
     </Container>
   );
