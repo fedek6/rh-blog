@@ -11,16 +11,22 @@ interface Props {
   handleMenuToggle: () => void;
 }
 
+type Views = "menu" | "search";
+
 export const OverlayMobile: React.FC<Props> = ({
   isVisible,
   handleMenuToggle,
 }) => {
+  const [view, setView] = React.useState<Views>("menu");
+
   return (
     <Container $isVisible={isVisible}>
       <div className="flex justify-between h-16 items-center px-5">
         <Logo className="h-8 lg:h-10" />
-        <div>
-          <BackButton onClick={console.log} aria-label="Return to menu" />
+        <div className="flex gap-4">
+          {view === "search" && (
+            <BackButton onClick={console.log} aria-label="Return to menu" />
+          )}
           <CloseButton onClick={handleMenuToggle} aria-label="Close overlay" />
         </div>
       </div>
