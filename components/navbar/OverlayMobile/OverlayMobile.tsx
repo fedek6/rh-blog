@@ -2,22 +2,25 @@ import React from "react";
 import { CloseButton } from "@/components/common/CloseButton";
 import { Menu } from "@/components/navbar/Menu";
 import { MAIN_MENU } from "@/config/menu";
+import { Container } from "./OverlayMobile.styles";
 
-type Props = {
-  handleMenuClose: () => void;
-};
+interface Props {
+  isVisible: boolean;
+  handleMenuToggle: () => void;
+}
 
-export const OverlayMenu: React.FC<Props> = React.memo(function OverlayMenu({
-  handleMenuClose,
-}) {
+export const OverlayMobile: React.FC<Props> = ({
+  isVisible,
+  handleMenuToggle,
+}) => {
   return (
-    <>
+    <Container $isVisible={isVisible}>
       <div className="flex justify-end">
-        <CloseButton onClick={handleMenuClose} />
+        <CloseButton onClick={handleMenuToggle} />
       </div>
       <nav className="text-xl font-display font-bold pt-10">
         <Menu items={MAIN_MENU} className="flex flex-col space-y-4" />
       </nav>
-    </>
+    </Container>
   );
-});
+};
