@@ -7,7 +7,7 @@ import {
 import { LogoBanner } from "@/components/common/LogoBanner";
 import { Hamburger } from "@/components/navbar/Hamburger";
 import { OverlayMenu } from "../OverlayMenu/OverlayMenu";
-import { DesktopMenu } from "../DesktopMenu/DesktopMenu";
+import { MenuDesktop } from "../MenuDesktop";
 
 type Props = {};
 
@@ -41,7 +41,7 @@ export const NavBar: React.FC<Props> = () => {
     <Container>
       <LogoBanner />
       <NavContainerDesktop>
-        <DesktopMenu />
+        <MenuDesktop />
       </NavContainerDesktop>
       <div className="lg:hidden">
         <Hamburger onClick={toggleMenu} />
