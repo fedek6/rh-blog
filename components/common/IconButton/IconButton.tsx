@@ -12,7 +12,7 @@ const Button = tw.button`
   rounded-lg
   h-10
   w-10
-  flex
+  inline-flex
   justify-center
   items-center
 `;
