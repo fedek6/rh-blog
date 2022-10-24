@@ -40,7 +40,7 @@ export const NavBar: React.FC<Props> = () => {
         <MenuDesktop />
       </NavContainerDesktop>
       <div className="lg:hidden">
-        <Hamburger onClick={toggleMenu} />
+        <Hamburger onClick={toggleMenu} aria-label="Open menu" />
         <OverlayMobile
           isVisible={isMenuVisible}
           handleMenuToggle={toggleMenu}
