@@ -1,4 +1,4 @@
-import { Layout } from "@/components/Layout";
+import { DefaultLayout } from "@/components/layout/DefaultLayout";
 import { CommonSEO } from "@/components/SEO";
 import {
   getPagination,
@@ -9,7 +9,7 @@ import {
   Frontmatter,
   slicePosts,
 } from "@/lib/content";
-import { Pagination } from "@/components/Pagination";
+import { Pagination } from "@/components/common/Pagination";
 import { Excerpt } from "@/components/content/Post";
 import { CONTENT_CONFIG } from "@/config/content";
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
@@ -26,7 +26,7 @@ interface Params extends ParsedUrlQuery {
 
 const Page: NextPage<Props> = ({ posts, pagination }) => {
   return (
-    <Layout>
+    <DefaultLayout>
       <CommonSEO />
       {JSON.stringify(pagination)}
 
@@ -34,7 +34,7 @@ const Page: NextPage<Props> = ({ posts, pagination }) => {
         <Excerpt {...post} key={post.slug} />
       ))}
       <Pagination pagination={pagination} prefix="page" removePrefix />
-    </Layout>
+    </DefaultLayout>
   );
 };
 
