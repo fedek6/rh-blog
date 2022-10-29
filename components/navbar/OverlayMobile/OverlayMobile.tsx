@@ -5,7 +5,12 @@ import { CloseButton } from "@/components/common/CloseButton";
 import { SearchButton } from "@/components/common/SearchButton";
 import { Menu } from "@/components/navbar/Menu";
 import { MAIN_MENU } from "@/config/menu";
-import { Container } from "./OverlayMobile.styles";
+import {
+  Container,
+  SlideContainer,
+  SlidingContainer,
+  Slide,
+} from "./OverlayMobile.styles";
 
 interface Props {
   isVisible: boolean;
@@ -39,9 +44,15 @@ export const OverlayMobile: React.FC<Props> = ({
           <CloseButton onClick={handleMenuToggle} aria-label="Close overlay" />
         </div>
       </div>
-      <nav className="text-xl font-display font-bold pt-10">
+      <SlideContainer>
+        <SlidingContainer>
+          <Slide>1</Slide>
+          <Slide>2</Slide>
+        </SlidingContainer>
+      </SlideContainer>
+      {/*<nav className="text-xl font-display font-bold pt-10">
         <Menu items={MAIN_MENU} className="flex flex-col space-y-4" />
-      </nav>
+          </nav>*/}
     </Container>
   );
 };
