@@ -14,7 +14,7 @@ const LINK_CLASSES = [
   "font-bold",
   "p-4",
   "hover:text-english-vermillion",
-  "dark:text-white",
+  "dark:text-platinum-100",
   "hover:dark:text-max-yellow-red",
 ];
 
