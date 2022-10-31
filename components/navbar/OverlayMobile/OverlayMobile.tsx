@@ -24,7 +24,7 @@ export const OverlayMobile: React.FC<Props> = ({
   handleMenuToggle,
 }) => {
   const [view, setView] = React.useState<Views>("menu");
-  const slide = React.useMemo(() => (view === "menu" ? 0 : 1), [view]);
+  const slide = view === "menu" ? 0 : 1;
 
   React.useEffect(() => {
     !isVisible && setView("menu");
