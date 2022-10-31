@@ -51,6 +51,11 @@ export const SlidingContainer = tw.div<SlidingContainerProps>`
 export const Slide = tw.div`
   w-screen
 
+  px-5
+  py-4
+  flex
+  justify-center
+
   bg-platinum-100
   dark:bg-eerie-black-500
 `;

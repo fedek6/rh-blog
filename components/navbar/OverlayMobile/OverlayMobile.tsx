@@ -52,7 +52,7 @@ export const OverlayMobile: React.FC<Props> = ({
       <SlideContainer>
         <SlidingContainer $slide={slide}>
           <Slide>
-            <Menu items={MAIN_MENU} />
+            <Menu items={MAIN_MENU} className="text-center" />
           </Slide>
           <Slide>Search</Slide>
         </SlidingContainer>
