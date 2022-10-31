@@ -24,6 +24,11 @@ export const OverlayMobile: React.FC<Props> = ({
   handleMenuToggle,
 }) => {
   const [view, setView] = React.useState<Views>("menu");
+  const slide = React.useMemo(() => (view === "menu" ? 0 : 1), [view]);
+
+  React.useEffect(() => {
+    !isVisible && setView("menu");
+  }, [isVisible]);
 
   return (
     <Container $isVisible={isVisible}>
@@ -45,14 +50,13 @@ export const OverlayMobile: React.FC<Props> = ({
         </div>
       </div>
       <SlideContainer>
-        <SlidingContainer>
-          <Slide>1</Slide>
-          <Slide>2</Slide>
+        <SlidingContainer $slide={slide}>
+          <Slide>
+            <Menu items={MAIN_MENU} />
+          </Slide>
+          <Slide>Search</Slide>
         </SlidingContainer>
       </SlideContainer>
-      {/*<nav className="text-xl font-display font-bold pt-10">
-        <Menu items={MAIN_MENU} className="flex flex-col space-y-4" />
-          </nav>*/}
     </Container>
   );
 };

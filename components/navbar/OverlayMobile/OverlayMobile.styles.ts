@@ -33,18 +33,24 @@ export const SlideContainer = tw.div`
   grow
   overflow-hidden
   flex
-
-  border-english-vermillion-100
-  border
 `;
 
 export const SlidingContainer = tw.div<SlidingContainerProps>`
   w-auto
   grow
   flex
+  duration-500
+  ease-in-out
+
+  transition
+
+  ${(p: SlidingContainerProps) =>
+    p.$slide == 0 ? "translate-x-0" : "translate-x-[-50%]"}
 `;
 
 export const Slide = tw.div`
-  w-[100vw]
-  bg-english-vermillion-700
+  w-screen
+
+  bg-platinum-100
+  dark:bg-eerie-black-500
 `;
