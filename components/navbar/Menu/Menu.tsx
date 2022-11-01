@@ -1,9 +1,10 @@
-import React from "react";
-import { HybridLink } from "@/components/common/HybridLink";
+import React, { ComponentType } from "react";
 import { uniqueId } from "@/utils/uniqueId";
+import type { HybridLink } from "@/components/common/HybridLink";
 
 type Props = {
   items: Array<HybridLink>;
+  LinkComponent: ComponentType<HybridLink>;
 };
 
 type NativeProps = React.ComponentPropsWithoutRef<"ul">;
@@ -18,12 +19,16 @@ const LINK_CLASSES = [
   "hover:dark:text-max-yellow-red",
 ];
 
-export const Menu: React.FC<Props & NativeProps> = ({ items, ...props }) => {
+export const Menu: React.FC<Props & NativeProps> = ({
+  items,
+  LinkComponent,
+  ...props
+}) => {
   return (
     <ul {...props}>
       {items.map((item) => (
         <li key={uniqueId()}>
-          <HybridLink {...item} className={LINK_CLASSES.join(" ")} />
+          <LinkComponent {...item} />
         </li>
       ))}
     </ul>

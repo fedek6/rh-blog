@@ -1,9 +1,10 @@
-import React from "react";
+import React, { ComponentType } from "react";
 import { Logo } from "@/components/common/Logo";
 import { BackButton } from "@/components/common/BackButton";
 import { CloseButton } from "@/components/common/CloseButton";
 import { SearchButton } from "@/components/common/SearchButton";
 import { Menu } from "@/components/navbar/Menu";
+import { HybridLink } from "@/components/common/HybridLink";
 import { MAIN_MENU } from "@/config/menu";
 import {
   Container,
@@ -18,6 +19,13 @@ interface Props {
 }
 
 type Views = "menu" | "search";
+
+const Link: ComponentType<HybridLink> = (props) => (
+  <HybridLink
+    className="block text-eerie-black font-display font-bold text-m-lg mb-61_8p px-8 py-2 hover:text-english-vermillion dark:text-platinum-300 hover:dark:text-max-yellow-red"
+    {...props}
+  />
+);
 
 export const OverlayMobile: React.FC<Props> = ({
   isVisible,
@@ -52,7 +60,11 @@ export const OverlayMobile: React.FC<Props> = ({
       <SlideContainer>
         <SlidingContainer $slide={slide}>
           <Slide>
-            <Menu items={MAIN_MENU} className="text-center" />
+            <Menu
+              items={MAIN_MENU}
+              LinkComponent={Link}
+              className="text-center"
+            />
           </Slide>
           <Slide>Search</Slide>
         </SlidingContainer>
