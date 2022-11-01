@@ -9,7 +9,7 @@ export const LogoBanner = () => {
         <div className="mr-4">
           <Logo className="h-8 lg:h-10" />
         </div>
-        <div className="hidden sm:block h-6 text-xl lg:text-2xl font-display font-bold">
+        <div className="hidden sm:block h-6 text-m-lg lg:text-d-lg font-display font-bold">
           blog
         </div>
       </a>
