@@ -60,11 +60,13 @@ export const OverlayMobile: React.FC<Props> = ({
       <SlideContainer>
         <SlidingContainer $slide={slide}>
           <Slide>
-            <Menu
-              items={MAIN_MENU}
-              LinkComponent={Link}
-              className="text-center"
-            />
+            <div className="pt-[10vh]">
+              <Menu
+                items={MAIN_MENU}
+                LinkComponent={Link}
+                className="text-center"
+              />
+            </div>
           </Slide>
           <Slide>Search</Slide>
         </SlidingContainer>
