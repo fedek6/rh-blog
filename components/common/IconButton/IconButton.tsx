@@ -19,7 +19,7 @@ const Button = tw.button`
 
 type Props = {
   children: React.ReactNode;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const IconButton: React.FC<Props> = ({ children, ...props }) => {
