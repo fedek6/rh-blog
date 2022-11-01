@@ -9,7 +9,7 @@ type Props = {
 
 type NativeProps = React.ComponentPropsWithoutRef<"ul">;
 
-export const Menu: React.FC<Props & NativeProps> = ({
+const MenuComponent: React.FC<Props & NativeProps> = ({
   items,
   LinkComponent,
   ...props
@@ -24,3 +24,5 @@ export const Menu: React.FC<Props & NativeProps> = ({
     </ul>
   );
 };
+
+export const Menu = React.memo(MenuComponent);
