@@ -5,6 +5,7 @@ import { CloseButton } from "@/components/common/CloseButton";
 import { SearchButton } from "@/components/common/SearchButton";
 import { Menu } from "@/components/navbar/Menu";
 import { HybridLink } from "@/components/common/HybridLink";
+import { ThemeButton } from "@/components/common/ThemeButton";
 import { MAIN_MENU } from "@/config/menu";
 import {
   Container,
@@ -66,6 +67,7 @@ export const OverlayMobile: React.FC<Props> = ({
                 LinkComponent={Link}
                 className="text-center"
               />
+              <ThemeButton isTextVisible theme="dark" />
             </div>
           </Slide>
           <Slide>Search</Slide>
