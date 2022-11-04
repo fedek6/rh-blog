@@ -6,7 +6,8 @@ import IconMoon from "./icon-moon.svg";
 
 type Props = {
   isTextVisible: boolean;
-  theme: "dark" | "light";
+  theme?: string;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const ExtendedIconButton = tw(Button)`
@@ -19,10 +20,22 @@ export const ExtendedIconButton = tw(Button)`
   gap-2
 `;
 
-export const ThemeButton: React.FC<Props> = () => {
+const DarkBtn = (
+  <>
+    <span className="relative top-[0.1em]">Dark mode</span> <IconMoon />
+  </>
+);
+
+const LightBtn = (
+  <>
+    <span className="relative top-[0.1em]">Light mode</span> <IconSun />
+  </>
+);
+
+export const ThemeButton: React.FC<Props> = ({ theme, onClick }) => {
   return (
-    <ExtendedIconButton>
-      <span className="relative top-[0.1em]">Dark mode</span> <IconMoon />
+    <ExtendedIconButton onClick={onClick}>
+      {theme == "dark" ? LightBtn : DarkBtn}
     </ExtendedIconButton>
   );
 };

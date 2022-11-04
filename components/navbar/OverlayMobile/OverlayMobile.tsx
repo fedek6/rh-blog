@@ -7,6 +7,7 @@ import { Menu } from "@/components/navbar/Menu";
 import { HybridLink } from "@/components/common/HybridLink";
 import { ThemeButton } from "@/components/common/ThemeButton";
 import { MAIN_MENU } from "@/config/menu";
+import { useTheme } from "next-themes";
 import {
   Container,
   SlideContainer,
@@ -34,10 +35,17 @@ export const OverlayMobile: React.FC<Props> = ({
 }) => {
   const [view, setView] = React.useState<Views>("menu");
   const slide = view === "menu" ? 0 : 1;
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   React.useEffect(() => {
     !isVisible && setView("menu");
   }, [isVisible]);
+
+  const isDark = theme === "dark" || resolvedTheme === "dark";
+
+  const handleThemeSwitch = () => {
+    setTheme(isDark ? "light" : "dark");
+  };
 
   return (
     <Container $isVisible={isVisible}>
@@ -67,7 +75,11 @@ export const OverlayMobile: React.FC<Props> = ({
                 LinkComponent={Link}
                 className="text-center"
               />
-              <ThemeButton isTextVisible theme="dark" />
+              <ThemeButton
+                theme={theme!}
+                onClick={handleThemeSwitch}
+                isTextVisible
+              />
             </div>
           </Slide>
           <Slide>Search</Slide>
