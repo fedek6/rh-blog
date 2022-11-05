@@ -1,14 +1,11 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 import { Button } from "@/components/common/Button";
+import { useCustomTheme } from "@/hooks/useCustomTheme";
 import IconSun from "./icon-sun.svg";
 import IconMoon from "./icon-moon.svg";
 
-type Props = {
-  isTextVisible: boolean;
-  theme?: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-};
+type Props = {};
 
 export const ExtendedIconButton = tw(Button)`
   px-4
@@ -32,10 +29,20 @@ const LightBtn = (
   </>
 );
 
-export const ThemeButton: React.FC<Props> = ({ theme, onClick }) => {
+export const ThemeButton: React.FC<Props> = () => {
+  const [mounted, setMounted] = React.useState(false);
+  const [isDark, handleThemeSwitch] = useCustomTheme();
+
+  // Prevent hydration error
+  React.useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <ExtendedIconButton onClick={onClick}>
-      {theme == "dark" ? LightBtn : DarkBtn}
+    <ExtendedIconButton onClick={handleThemeSwitch}>
+      {isDark ? LightBtn : DarkBtn}
     </ExtendedIconButton>
   );
 };

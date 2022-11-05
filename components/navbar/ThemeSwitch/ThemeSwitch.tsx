@@ -1,22 +1,16 @@
 import React from "react";
 import { Container } from "./ThemeSwitch.styles";
-import { useTheme } from "next-themes";
+import { useCustomTheme } from "@/hooks/useCustomTheme";
 import { Switch } from "@/components/common/Switch";
 
 type Props = {};
 
 export const ThemeSwitch: React.FC<Props> = ({ ...props }) => {
   const [mounted, setMounted] = React.useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [isDark, handleThemeSwitch] = useCustomTheme();
 
   // Prevent hydration error
   React.useEffect(() => setMounted(true), []);
-
-  const isDark = theme === "dark" || resolvedTheme === "dark";
-
-  const handleThemeSwitch = () => {
-    setTheme(isDark ? "light" : "dark");
-  };
 
   return (
     <Container {...props}>
