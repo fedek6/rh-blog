@@ -42,7 +42,7 @@ export const SlidingContainer = tw.div<SlidingContainerProps>`
   duration-500
   ease-in-out
 
-  transition
+  transition-transform
 
   ${(p: SlidingContainerProps) =>
     p.$slide == 0 ? "translate-x-0" : "translate-x-[-50%]"}
