@@ -2,6 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 import { Button } from "@/components/common/Button";
 import { useCustomTheme } from "@/hooks/useCustomTheme";
+import { useIsMounted } from "@/hooks/useIsMounted";
 import IconSun from "./icon-sun.svg";
 import IconMoon from "./icon-moon.svg";
 
@@ -30,13 +31,10 @@ const LightBtn = (
 );
 
 export const ThemeButton: React.FC<Props> = () => {
-  const [mounted, setMounted] = React.useState(false);
+  const isMounted = useIsMounted();
   const [isDark, handleThemeSwitch] = useCustomTheme();
 
-  // Prevent hydration error
-  React.useEffect(() => setMounted(true), []);
-
-  if (!mounted) {
+  if (!isMounted) {
     return null;
   }
 
