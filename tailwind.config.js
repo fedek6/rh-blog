@@ -74,6 +74,16 @@ module.exports = {
         900: "#2e2e2e",
         DEFAULT: "#e6e8e6",
       },
+      transparent: "transparent",
+    },
+    // 📏 Line heights
+    lineHeight: {
+      120: "120%",
+      130: "130%",
+      145: "145%",
+      "161-8": "161.8%",
+      "184-2": "184.2%",
+      DEFAULT: "161.8%",
     },
     //
     extend: {
