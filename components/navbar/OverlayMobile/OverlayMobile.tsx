@@ -1,18 +1,20 @@
-import React, { ComponentType } from "react";
-import { Logo } from "@/components/common/Logo";
-import { BackButton } from "@/components/common/BackButton";
-import { CloseButton } from "@/components/common/CloseButton";
-import { SearchButton } from "@/components/common/SearchButton";
-import { Menu } from "@/components/navbar/Menu";
-import { HybridLink } from "@/components/common/HybridLink";
-import { ThemeButton } from "@/components/common/ThemeButton";
-import { MAIN_MENU } from "@/config/menu";
 import {
   Container,
+  Slide,
   SlideContainer,
   SlidingContainer,
-  Slide,
 } from "./OverlayMobile.styles";
+import React, { ComponentType } from "react";
+
+import { BackButton } from "@/components/common/BackButton";
+import { CloseButton } from "@/components/common/CloseButton";
+import { HybridLink } from "@/components/common/HybridLink";
+import { Logo } from "@/components/common/Logo";
+import { MAIN_MENU } from "@/config/menu";
+import { Menu } from "@/components/navbar/Menu";
+import { Search } from "@/components/navbar/Search";
+import { SearchButton } from "@/components/common/SearchButton";
+import { ThemeButton } from "@/components/common/ThemeButton";
 
 interface Props {
   isVisible: boolean;
@@ -70,7 +72,9 @@ export const OverlayMobile: React.FC<Props> = ({
               <ThemeButton />
             </div>
           </Slide>
-          <Slide>Search</Slide>
+          <Slide>
+            <Search />
+          </Slide>
         </SlidingContainer>
       </SlideContainer>
     </Container>
