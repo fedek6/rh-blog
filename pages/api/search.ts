@@ -1,32 +1,29 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
+
 import searchCache from "@/data/search/cache.json";
 
 type SearchResult = Omit<typeof searchCache[0], "blob">;
 
-type Data =
+export type SearchData =
   | {
       results: SearchResult[];
     }
   | {
-      error: boolean;
       msg: string;
     };
 
-type Params = {
-  search?: string;
-};
-
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<SearchData>
 ) {
-  if (req.method === "POST") {
-    const params = req.body as Params;
+  const {
+    query: { q },
+  } = req;
 
-    if (typeof params.search == "string") {
+  if (req.method === "GET") {
+    if (q && typeof q === "string") {
       const results = searchCache
-        .filter((post) => post.blob.includes(params.search!))
+        .filter((post) => post.blob.includes(q))
         .map((result) => ({
           slug: result.slug,
           title: result.title,
@@ -35,9 +32,9 @@ export default function handler(
 
       res.status(200).json({ results });
     } else {
-      res.status(400).json({ error: true, msg: "Missing param" });
+      res.status(400).json({ msg: "Missing param" });
     }
   } else {
-    res.status(500).json({ error: true, msg: "Bad method" });
+    res.status(500).json({ msg: "Bad method" });
   }
 }
