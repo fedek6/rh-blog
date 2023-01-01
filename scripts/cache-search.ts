@@ -1,7 +1,9 @@
+import * as path from "path";
+
 import { getAllFrontmatter, getContentPath } from "../lib/content";
+
 import removeMd from "remove-markdown";
 import { writeFileSync } from "fs";
-import * as path from "path";
 
 (async () => {
   try {
@@ -25,6 +27,6 @@ import * as path from "path";
     writeFileSync(path.join(contentPath, "cache.json"), JSON.stringify(search));
     console.log("Successfuly generated search cache 🔍");
   } catch (e) {
-    throw new Error("Something went wrong with cache-search script.");
+    console.error(e);
   }
 })();

@@ -3,16 +3,26 @@ import React, { useState } from "react";
 import { InputError } from "@/components/form/InputError";
 import { TextInput } from "@/components/form/TextInput";
 
-const validator = (input: string) => input.length >= 3;
+interface Props {
+  onChange?: (input: string) => void;
+}
 
-export const SearchInput = () => {
+const validInput = (input: string) => input.length >= 3;
+
+export const SearchInput: React.FC<Props> = ({ onChange }) => {
   const [isValid, setIsValid] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setInputValue(value);
-    setIsValid(validator(value));
+
+    if (validInput(value)) {
+      setIsValid(true);
+      onChange && onChange(value);
+    } else {
+      setIsValid(false);
+    }
   };
 
   return (
@@ -20,7 +30,8 @@ export const SearchInput = () => {
       <TextInput
         placeholder="what you’re looking for?"
         value={inputValue}
-        onChange={onChange}
+        onChange={handleChange}
+        autoComplete="false"
       />
       <InputError aria-hidden={isValid}>
         Please type at least 3 characters
