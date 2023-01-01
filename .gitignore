@@ -39,3 +39,4 @@ yarn-error.log*
 
 # search cache
 /data/search/*
+!/data/search/.gitkeep
