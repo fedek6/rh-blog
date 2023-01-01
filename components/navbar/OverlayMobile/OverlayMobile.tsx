@@ -73,7 +73,7 @@ export const OverlayMobile: React.FC<Props> = ({
             </div>
           </Slide>
           <Slide>
-            <Search />
+            <Search isEmpty={view !== "search"} />
           </Slide>
         </SlidingContainer>
       </SlideContainer>
