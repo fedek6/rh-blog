@@ -7,10 +7,7 @@ import { useSearch } from "@/hooks/useSearch";
 
 export const Search: React.FC = () => {
   const [searchInput, setSearchInput] = useState<string>();
-  const debouncedSearchInput = useDebounce<string | undefined>(
-    searchInput,
-    600
-  );
+  const debouncedSearchInput = useDebounce<string | undefined>(searchInput);
   const { data, isLoading } = useSearch(debouncedSearchInput);
 
   const handleSearchInputUpdate = (input: string) => setSearchInput(input);
