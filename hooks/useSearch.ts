@@ -5,7 +5,10 @@ import useSWR from "swr";
 export const useSearch = (input?: string) => {
   const { data, error, isLoading } = useSWR<SearchData>(
     input ? `/api/search?q=${input}` : null,
-    fetcher
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    }
   );
 
   return {
