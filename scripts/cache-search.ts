@@ -20,6 +20,7 @@ import { writeFileSync } from "fs";
         slug: `blog/${post.slug}`,
         title: post.title,
         summary: post.summary,
+        date: post.date,
         blob,
       };
     });

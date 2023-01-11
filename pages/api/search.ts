@@ -25,9 +25,8 @@ export default function handler(
       const results = searchCache
         .filter((post) => post.blob.includes(q))
         .map((result) => ({
-          slug: result.slug,
-          title: result.title,
-          summary: result.summary,
+          ...result,
+          blob: undefined,
         }));
 
       res.status(200).json({ results });
