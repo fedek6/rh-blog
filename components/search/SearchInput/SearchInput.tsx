@@ -5,6 +5,7 @@ import { TextInput } from "@/components/form/TextInput";
 
 interface Props {
   onChange?: (input: string) => void;
+  msg?: string;
 }
 
 export interface SearchInputHandle {
@@ -15,9 +16,10 @@ const validInput = (input: string) => input.length >= 3;
 
 // eslint-disable-next-line react/display-name
 export const SearchInput = forwardRef<SearchInputHandle, Props>(
-  ({ onChange }, ref) => {
+  ({ onChange, msg }, ref) => {
     const [isValid, setIsValid] = useState(false);
     const [inputValue, setInputValue] = useState("");
+    const hasMsg = !!msg;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
@@ -49,9 +51,13 @@ export const SearchInput = forwardRef<SearchInputHandle, Props>(
           onChange={handleChange}
           autoComplete="false"
         />
-        <InputError aria-hidden={isValid}>
-          Please type at least 3 characters
-        </InputError>
+        {!isValid ? (
+          <InputError aria-hidden="false">
+            Please type at least 3 characters
+          </InputError>
+        ) : (
+          <InputError aria-hidden={!hasMsg}>{msg}</InputError>
+        )}
       </div>
     );
   }

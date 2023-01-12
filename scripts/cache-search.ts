@@ -16,6 +16,8 @@ import { writeFileSync } from "fs";
       blob += " " + post.tags.join(", ");
       blob += " " + removeMd(post.content);
 
+      blob = blob.toLowerCase();
+
       return {
         slug: `blog/${post.slug}`,
         title: post.title,

@@ -2,7 +2,13 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import searchCache from "@/data/search/cache.json";
 
-type SearchResult = Omit<typeof searchCache[0], "blob">;
+export interface SearchResult {
+  slug: string;
+  title: string;
+  summary: string;
+  date: string;
+  blob: string;
+}
 
 export type SearchData =
   | {
@@ -14,7 +20,7 @@ export type SearchData =
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<SearchData>
+  res: NextApiResponse<Omit<SearchData, "blob">>
 ) {
   const {
     query: { q },
@@ -23,7 +29,7 @@ export default function handler(
   if (req.method === "GET") {
     if (q && typeof q === "string") {
       const results = searchCache
-        .filter((post) => post.blob.includes(q))
+        .filter((post) => post.blob.includes(q.toLowerCase()))
         .map((result) => ({
           ...result,
           blob: undefined,

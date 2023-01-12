@@ -78,6 +78,7 @@ module.exports = {
     },
     // 📏 Line heights
     lineHeight: {
+      100: "100%",
       120: "120%",
       130: "130%",
       145: "145%",
