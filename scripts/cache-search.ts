@@ -19,7 +19,7 @@ import { writeFileSync } from "fs";
       blob = blob.toLowerCase();
 
       return {
-        slug: `blog/${post.slug}`,
+        slug: `/${post.slug}`,
         title: post.title,
         summary: post.summary,
         date: post.date,
