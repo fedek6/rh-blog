@@ -9,4 +9,6 @@ export const InputError = tw.span`
   transition-opacity
 
   aria-hidden:opacity-0
+  flex
+  min-h-[1em]
 `;

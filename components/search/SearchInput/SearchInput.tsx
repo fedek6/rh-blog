@@ -17,19 +17,19 @@ const validInput = (input: string) => input.length >= 3;
 // eslint-disable-next-line react/display-name
 export const SearchInput = forwardRef<SearchInputHandle, Props>(
   ({ onChange, msg }, ref) => {
-    const [isValid, setIsValid] = useState(false);
     const [inputValue, setInputValue] = useState("");
-    const hasMsg = !!msg;
+    const [errorMsg, setErrorMsg] = useState<string>();
+    const hasMsg = !!errorMsg || !!msg;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
       setInputValue(value);
 
       if (validInput(value)) {
-        setIsValid(true);
         onChange && onChange(value);
+        setErrorMsg(undefined);
       } else {
-        setIsValid(false);
+        setErrorMsg("Please type at least 3 characters");
       }
     };
 
@@ -51,13 +51,7 @@ export const SearchInput = forwardRef<SearchInputHandle, Props>(
           onChange={handleChange}
           autoComplete="false"
         />
-        {!isValid ? (
-          <InputError aria-hidden="false">
-            Please type at least 3 characters
-          </InputError>
-        ) : (
-          <InputError aria-hidden={!hasMsg}>{msg}</InputError>
-        )}
+        <InputError aria-hidden={!hasMsg}>{errorMsg || msg}</InputError>
       </div>
     );
   }

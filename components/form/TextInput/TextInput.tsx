@@ -10,6 +10,7 @@ const StyledInput = tw.input`
   border-eerie-black
   font-sans
   leading-184-2
+  rounded-none
   bg-transparent
 
   py-2

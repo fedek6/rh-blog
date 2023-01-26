@@ -6,9 +6,8 @@ export const MainWrapper = tw.div`
 `;
 
 export const ResultsWrapper = tw.div`
-  max-h-[66vh]
-  h-full
-  overflow-y-visible
+  overflow-y-scroll
+  h-[30vh]
 `;
 
 export const SearchWrapper = tw.div`
