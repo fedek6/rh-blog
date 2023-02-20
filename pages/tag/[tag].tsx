@@ -1,4 +1,4 @@
-import { Layout } from "@/components/Layout";
+import { DefaultLayout } from "@/components/layout/DefaultLayout";
 import { CommonSEO } from "@/components/SEO";
 import {
   getAllFrontmatter,
@@ -21,13 +21,13 @@ interface Params extends ParsedUrlQuery {
 
 const Tag: NextPage<Props> = ({ posts, tag }) => {
   return (
-    <Layout>
+    <DefaultLayout>
       <CommonSEO />
       <h1>Tag: {tag}</h1>
       {posts.map((post) => (
         <Excerpt {...post} key={post.slug} />
       ))}
-    </Layout>
+    </DefaultLayout>
   );
 };
 
